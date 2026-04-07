@@ -4,6 +4,7 @@ __pycache__/
 
 data/raw/*.csv
 models/gpt2_finetuned/
+models/*.pkl
 
 *.pyc
 .ipynb_checkpoints/
