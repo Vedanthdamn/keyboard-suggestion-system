@@ -41,25 +41,44 @@ Core metrics used in this repository:
 - **Top-5 Accuracy**: whether the true next word appears in top 5 suggestions.
 - **Top-1 Accuracy**: whether the first suggestion is correct.
 
-Recent validated run (standalone `app.py` on a 500-sample test split):
-- Top-5 Accuracy: **64.4%**
-- Top-1 Accuracy: **49.0%**
+Recent validated run (inference-only, 800 sampled next-word pairs from `train.csv`):
+
+- Baseline model (`predict`) Top-1: **50.0%**
+- Baseline model (`predict`) Top-5: **66.4%**
+- Final model (`predict_hybrid`) Top-1: **52.2%**
+- Final model (`predict_hybrid`) Top-5: **70.0%**
 
 ## Example Outputs
-Representative examples from `outputs/test_cases.json`:
+Sample outputs from `outputs/test_cases.json`:
 
-- `machine learning` -> `['algorithm', 'for', 'algorithms', 'machine', 'string']`
-- `python` -> `['how', 'code', 'python', 'script', 'error']`
-- `deep` -> `['learning', 'copy', 'depth', 'the', 'of']`
-- `data science` -> `['general', 'the', 'to', 'method', 'of']`
-- `how to` -> `['get', 'use', 'make', 'the', 'last']`
-- `javascript` -> `['to', 'and', 'css', 'code', 'get']`
-- `neural network` -> `['in', 'for', 'with', 'without', 'multiple']`
-- `sql` -> `['server', 'query', 'to', 'not', 'and']`
-- `git` -> `['repository', 'commit', 'lab', 'merge', 'code']`
-- `pandas dataframe` -> `['in', 'column', 'columns', 'using', 'csv']`
-- `react` -> `['native', 'the', 'and', 'how', 'can']`
-- `sorting algorithm` -> `['in', 'for', 'on', 'the', 'strings']`
+| Query | Top 5 Suggestions |
+|---|---|
+| machine learning | query, algorithm, string, algorithms, in |
+| python | the, how, and, get, to |
+| deep | the, learning, ly, nested, and |
+| data science | general, and, the, in, of |
+| how to | get, a, use, create, make |
+| javascript | and, function, to, how, a |
+| neural network | in, for, with, loss, using |
+| sql | and, server, of, query, to |
+| git | and, lab, in, commit, is |
+| pandas dataframe | to, in, with, column, is |
+| react | native, the, js, and, to |
+| sorting algorithm | for, in, to, of, the |
+| docker | and, compose, container, in, for |
+| api design | the, with, of, for, and |
+| natural language | the, for, of, and, to |
+
+## Visualizations
+
+### Accuracy Improvement (Baseline vs Final)
+![Accuracy Improvement](outputs/accuracy_improvement.png)
+
+### Word Frequency Distribution (Zipf's Law)
+![Zipf Distribution](outputs/zipf_distribution.png)
+
+### Query Length Distribution
+![Query Length Distribution](outputs/query_length_distribution.png)
 
 ## Strengths and Limitations
 ### Strengths
@@ -147,9 +166,13 @@ Open `http://localhost:5173` in your browser.
 3. Top 5 suggestions appear in the dropdown below the input.
 
 ## Model Weights
-Large model artifacts (especially GPT checkpoints) are excluded from Git where appropriate.
+Large model artifacts are hosted externally to keep this repository lightweight for submission.
 
-- Google Drive (placeholder): `https://drive.google.com/your-model-link-here`
+- Download placeholder: https://drive.google.com/YOUR-LINK
+- Required weight files:
+	- `models/ngram_weights.pkl`
+	- `models/tfidf_vectorizer.pkl`
+	- `models/tfidf_matrix.pkl`
 
 ## Repository Structure
 ```
