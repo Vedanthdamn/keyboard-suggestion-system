@@ -1,0 +1,194 @@
+[
+  {
+    "query": "machine learning",
+    "suggestions": [
+      "algorithm",
+      "for",
+      "in",
+      "algorithms",
+      "python"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "python",
+    "suggestions": [
+      "how",
+      "code",
+      "python",
+      "to",
+      "script"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "deep",
+    "suggestions": [
+      "learning",
+      "copy",
+      "deep",
+      "the",
+      "neural"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "data science",
+    "suggestions": [
+      "general",
+      "the",
+      "dataframe",
+      "of",
+      "is"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "how to",
+    "suggestions": [
+      "get",
+      "add",
+      "use",
+      "make",
+      "a"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "javascript",
+    "suggestions": [
+      "to",
+      "and",
+      "how",
+      "js",
+      "code"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "neural network",
+    "suggestions": [
+      "in",
+      "for",
+      "with",
+      "without",
+      "node"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "sql",
+    "suggestions": [
+      "server",
+      "and",
+      "query",
+      "database",
+      "to"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "git",
+    "suggestions": [
+      "repository",
+      "commit",
+      "push",
+      "merge",
+      "not"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "pandas dataframe",
+    "suggestions": [
+      "in",
+      "column",
+      "by",
+      "using",
+      "value"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "react",
+    "suggestions": [
+      "native",
+      "to",
+      "the",
+      "router",
+      "and"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "sorting algorithm",
+    "suggestions": [
+      "for",
+      "in",
+      "to",
+      "the",
+      "sum"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "docker",
+    "suggestions": [
+      "compose",
+      "container",
+      "and",
+      "docker",
+      "multiple"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "natural language",
+    "suggestions": [
+      "the",
+      "of",
+      "support",
+      "and",
+      "for"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "binary search",
+    "suggestions": [
+      "tree",
+      "on",
+      "with",
+      "for",
+      "a"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  },
+  {
+    "query": "xyz123abc",
+    "suggestions": [
+      "the",
+      "of",
+      "not",
+      "and",
+      "working"
+    ],
+    "model": "hybrid-trigram-gpt2-v3",
+    "top5_accuracy": 20.0
+  }
+]
