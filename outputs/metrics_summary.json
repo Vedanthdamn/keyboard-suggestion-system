@@ -1,0 +1,7 @@
+{
+  "baseline_top1": 50.0,
+  "baseline_top5": 66.4,
+  "final_top1": 52.2,
+  "final_top5": 70.0,
+  "sample_size": 800
+}
