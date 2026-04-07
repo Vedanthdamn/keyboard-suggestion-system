@@ -99,8 +99,52 @@ HF_HUB_DISABLE_SSL_VERIFICATION=1 .venv/bin/python -m jupyter nbconvert \
 .venv/bin/python app.py "machine learning"
 ```
 
-## Optional Demo
-The repository currently focuses on notebook + CLI inference. If a UI/demo frontend is added later, it can consume `predict_hybrid()` from `app.py` directly.
+## Web Demo
+
+Run the application entirely in browser mode with a FastAPI backend and a React frontend.
+
+### 1. Start Backend API (port 8000)
+From the repository root:
+
+```bash
+.venv/bin/python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+API endpoint:
+
+- `POST /predict`
+- Request body:
+
+```json
+{
+	"query": "machine learning"
+}
+```
+
+- Response body:
+
+```json
+{
+	"suggestions": ["query", "algorithm", "string", "algorithms", "in"]
+}
+```
+
+### 2. Start Frontend (port 5173)
+Open a second terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
+
+### 3. Example Usage
+
+1. Type `machine learning` in the input box.
+2. Suggestions are fetched automatically with a 300ms debounce.
+3. Top 5 suggestions appear in the dropdown below the input.
 
 ## Model Weights
 Large model artifacts (especially GPT checkpoints) are excluded from Git where appropriate.
@@ -110,6 +154,13 @@ Large model artifacts (especially GPT checkpoints) are excluded from Git where a
 ## Repository Structure
 ```
 .
+├── backend/
+│   └── main.py
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   └── SuggestionBox.jsx
+│   └── package.json
 ├── app.py
 ├── requirements.txt
 ├── notebooks/
