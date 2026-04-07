@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.DS_Store
+
+data/raw/*.csv
+models/gpt2_finetuned/
+
+*.pyc
+.ipynb_checkpoints/
