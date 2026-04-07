@@ -1,4 +1,4 @@
-"""Hybrid inference module for keyword suggestions."""
+"""Inference module for keyword suggestions."""
 
 import csv
 import os
@@ -42,10 +42,10 @@ def clean_text(raw_text):
     text = str(raw_text).lower()
     text = re.sub(r"[^a-z\s]", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
-    parts = text.split()
-    if len(parts) > 10:
-        parts = parts[:10]
-    return " ".join(parts)
+    words = text.split()
+    if len(words) > 10:
+        words = words[:10]
+    return " ".join(words)
 
 
 def _dedupe_keep_order(items):
@@ -136,7 +136,7 @@ def _ensure_loaded():
         load_models()
 
 
-def _normalize_dict(scores):
+def _normalize_scores(scores):
     if not scores:
         return {}
     max_v = max(scores.values())
@@ -181,7 +181,7 @@ def _trigram_ranked_candidates(query_tokens, tags=None, top_k=200):
             tag_raw[word] = sum(TAG_TO_WORDS.get(tag, {}).get(word, 0.0) for tag in tags)
 
     if tags:
-        tag_norm = _normalize_dict(tag_raw)
+        tag_norm = _normalize_scores(tag_raw)
         rescored = {}
         for w, s in raw_scores.items():
             rescored[w] = (0.85 * s) + (0.15 * tag_norm.get(w, 0.0))
@@ -265,26 +265,28 @@ def gpt2_predict(query: str, top_n: int = 5) -> list:
     top_ids = TORCH.topk(last_logits, k=k).indices.tolist()
 
     words = []
+    seen = set()
     query_words = set(cleaned_query.split())
     for tok_id in top_ids:
         token_txt = TOKENIZER.decode([tok_id], skip_special_tokens=True)
         token_words = clean_text(token_txt).split()
         for w in token_words:
-            if w and w not in query_words:
+            if w and w not in query_words and w not in seen:
+                seen.add(w)
                 words.append(w)
-        if len(_dedupe_keep_order(words)) >= top_n:
+        if len(words) >= top_n:
             break
 
-    return _dedupe_keep_order(words)[:top_n]
+    return words[:top_n]
 
 
 def predict_hybrid(query, tags=None, top_n=5):
-    trigram_suggestions = predict(query, tags=tags, top_n=max(10, top_n * 2))
+    ngram_suggestions = predict(query, tags=tags, top_n=max(10, top_n * 2))
     gpt2_suggestions = gpt2_predict(query, top_n=max(10, top_n * 2))
 
     score_map = defaultdict(float)
 
-    for rank, word in enumerate(trigram_suggestions, start=1):
+    for rank, word in enumerate(ngram_suggestions, start=1):
         score_map[word] += 0.6 * (1.0 / rank)
     for rank, word in enumerate(gpt2_suggestions, start=1):
         score_map[word] += 0.4 * (1.0 / rank)
