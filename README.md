@@ -11,9 +11,30 @@ The system combines statistical language modeling with retrieval fallback:
 - TF-IDF fallback for low-confidence or unseen contexts.
 - Optional tag-aware reranking and hybrid GPT-assisted inference in the notebook pipeline.
 
-## Dataset Description
-- Stack Overflow title dataset (`data/raw/train.csv`) used as training corpus.
-- Unigram frequency dataset (`data/raw/unigram_freq.csv`) used as prior signal for reranking and safe fallback.
+## 📂 Datasets Used
+
+### 1. Stack Overflow Questions Dataset
+Source: https://www.kaggle.com/datasets/imoore/60k-stack-overflow-questions-with-quality-rate
+
+Description:
+This dataset contains real-world Stack Overflow question titles, which simulate actual user search queries.
+Only the "Title" column was used to train the keyword suggestion system.
+
+Purpose:
+- Used to learn word sequences and query patterns
+- Forms the training corpus for the N-gram language model
+
+### 2. English Word Frequency Dataset
+Source: https://www.kaggle.com/datasets/rtatman/english-word-frequency
+
+Description:
+This dataset provides frequency counts of English words based on large text corpora.
+
+Purpose:
+- Used for fallback suggestions when the model encounters unseen inputs
+- Helps rank suggestions based on common word usage
+
+These datasets were chosen to balance real-world query patterns (Stack Overflow) with general language frequency (English word frequency), enabling the system to provide both context-aware and robust fallback predictions.
 
 ## System Design
 ### 1. Preprocessing
