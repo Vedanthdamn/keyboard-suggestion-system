@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import SuggestionBox from "./SuggestionBox";
 
-const API_URL = "http://localhost:8000/predict";
+const API_URL =
+  import.meta.env.VITE_PREDICT_API_URL || "http://localhost:8000/predict";
 const EXAMPLES = ["machine learning", "python", "neural network", "data science"];
 
 function useDebouncedValue(value, delayMs) {
