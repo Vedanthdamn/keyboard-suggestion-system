@@ -168,7 +168,7 @@ Open `http://localhost:5173` in your browser.
 ## Model Weights
 Large model artifacts are hosted externally to keep this repository lightweight for submission.
 
-- Download placeholder: https://drive.google.com/YOUR-LINK
+- Download placeholder: https://drive.google.com/drive/folders/1gJOcbp59nX0bLDFwjfecFnKa2ZFJoHZy?usp=drive_link
 - Required weight files:
 	- `models/ngram_weights.pkl`
 	- `models/tfidf_vectorizer.pkl`
