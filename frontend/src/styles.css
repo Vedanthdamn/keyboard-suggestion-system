@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap");
+
+:root {
+  --bg: #ffffff;
+  --surface: #f7f8fb;
+  --text: #121826;
+  --muted: #5f6675;
+  --border: #dbe0ea;
+  --focus: #0a66ff;
+  --shadow: 0 14px 38px rgba(19, 30, 55, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", "Avenir Next", sans-serif;
+  background:
+    radial-gradient(circle at 15% 20%, #f0f5ff 0%, transparent 35%),
+    radial-gradient(circle at 85% 90%, #f6f9f3 0%, transparent 30%),
+    var(--bg);
+  color: var(--text);
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.search-card {
+  width: min(760px, 100%);
+  animation: reveal 320ms ease-out;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  margin: 10px 0 26px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.search-shell {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+  padding: 17px 22px;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.search-input:focus {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 4px rgba(10, 102, 255, 0.13), var(--shadow);
+}
+
+.suggestions {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.suggestion-item {
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  transition: background 140ms ease;
+}
+
+.suggestion-item:hover {
+  background: var(--surface);
+}
+
+.loading,
+.error,
+.empty {
+  padding: 14px;
+  color: var(--muted);
+}
+
+.error {
+  color: #b42318;
+}
+
+.helper-text {
+  margin: 14px 8px 18px;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.example-chip {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: #1e293b;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.example-chip:hover {
+  transform: translateY(-1px);
+  border-color: #c5cedf;
+  background: #fbfcff;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .search-input {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .helper-text {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
